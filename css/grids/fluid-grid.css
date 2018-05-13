@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  padding-right: 2.08333333%;  /* 20 / 960 = 2.08333333%
+  /* 960 comes from 980 width minus 20px padding */
+}
+
+.row {
+  clear: both; /* ensures rows remain separated, and is not necessary to fill each row with elements to make a full 12 columns */
+}
+
+/*
+* Create gutters using a 20px margin on left of each columns
+* 20px padding right is already applied to wrapper class
+* 11 gutters + right padding = 12 x 20 = 240px
+* body width 960px - 240px gutters = 720px for columns
+* 720 / 12 = 60px for each columns
+* float columns to the left for alignment
+*/
+
+.col {
+  float: left;
+  margin-left: 2.08333333%;
+  width: 6.25%;  /* 60/960 = 6.25% */
+  background: rgb(255, 150, 150);
+}
+
+/*
+* Add new classes to specify widths for layout containers we want to span more than one column
+* The two dots e.g. ".col.span2" refer to an element with two classes, "col" and "span2"
+*/
+
+/* Two column widths (12.5%) plus one gutter width (2.08333333%) */
+.col.span2 { width: 14.58333333%; }
+/* Three column widths (18.75%) plus two gutter widths (4.1666666) */
+.col.span3 { width: 22.91666666%; }
+/* And so on... */
+.col.span4 { width: calc((6.25%*4) + (2.08333333%*3)); }
+.col.span5 { width: calc((6.25%*5) + (2.08333333%*4)); }
+.col.span6 { width: 47.91666665%; }
+.col.span7 { width: 56.24999998%; }
+.col.span8 { width: 64.58333331%; }
+.col.span9 { width: 72.91666664%; }
+.col.span10 { width: 81.24999997%; }
+.col.span11 { width: 89.5833333%; }
+.col.span12 { width: 97.91666663%; }
+
+/* MORE SEMANTIC -- linking size to a class that describes the content */
+
+.content {
+  width: calc((6.25%*8) + (2.08333333%*7));
+}

@@ -1,0 +1,136 @@
+.select {
+  /* This will create a positioning context for the list of options */
+  position: relative;
+
+  /* This will make our widget become part of the text flow and sizable at the same time */
+  display : inline-block;
+}
+
+.select.active,
+.select:focus {
+  outline: none;
+  box-shadow: 0 0 3px 1px #227755;
+}
+
+.select .optList {
+  /* This will make sure the list of options will be displayed below the value and out of the HTML flow */
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.select .optList.hidden {
+  /* hides the list in an accessible way */
+  max-height: 0;
+  visibility: hidden;
+}
+
+.select {
+  /* all sizes use "em" value for accessibility */
+  font-size: 0.625em; /* 10px, which is now the new font size context for the other stuff inside this selector */
+  font-family: Verdana, Arial, sans-serif;
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  /* add extra room for the down arrow icon on the side */
+  padding: .1em 2.5em .2em .5em; /* 1px 25px 2px 5px */
+  width: 10em;
+
+  border: .2em solid #000;
+  border-radius: .4em;
+  box-shadow: 0 .1em .2em rgba(0,0,0,.45);
+
+  /* three background declarations in case some browsers don't support linear gradients */
+  background: #f0f0f0;
+  background: -webkit-linear-gradient(90deg, #e3e3e3, #fcfcfc 50%, #f0f0f0);
+  background: linear-gradient(0deg, #e3e3e3, #fcfcfc 50%, #f0f0f0);
+}
+
+.select .value {
+  /* value can be wider than the widget, so we have to make sure it won't change the widget's width */
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+
+  vertical-align: top;
+
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.select:after {
+  content : "▼"; /* We use the unicode caracter U+25BC; see http://www.utf8-chartable.de */
+  position: absolute;
+  z-index : 1; /* This will be important to keep the arrow from overlapping the list of options */
+  top     : 0;
+  right   : 0;
+
+  -moz-box-sizing : border-box;
+  box-sizing : border-box;
+
+  height  : 100%;
+  width   : 2em;  /* 20px */
+  padding-top : .1em; /* 1px */
+
+  border-left  : .2em solid #000; /* 2px */
+  border-radius: 0 .1em .1em 0;  /* 0 1px 1px 0 */
+
+  background-color : #000;
+  color : #FFF;
+  text-align : center;
+}
+
+
+.select .optList {
+  z-index : 2; /* We explicitly said the list of options will always overlap the down arrow */
+
+  /* this will reset the default style of the ul element */
+  list-style: none;
+  margin : 0;
+  padding: 0;
+
+  -moz-box-sizing : border-box;
+  box-sizing : border-box;
+
+  /* This will ensure that even if the values are smaller than the widget,
+     the list of options will be as large as the widget itself */
+  min-width : 100%;
+
+  /* In case the list is too long, its content will overflow vertically
+     (which will add a vertical scrollbar automatically) but never horizontally
+     (because we haven't set a width, the list will adjust its width automatically.
+     If it can't, the content will be truncated) */
+  max-height: 10em; /* 100px */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  border: .2em solid #000; /* 2px */
+  border-top-width : .1em; /* 1px */
+  border-radius: 0 0 .4em .4em; /* 0 0 4px 4px */
+
+  box-shadow: 0 .2em .4em rgba(0,0,0,.4); /* 0 2px 4px */
+  background: #f0f0f0;
+}
+
+
+.select .option {
+  padding: .2em .3em; /* 2px 3px */
+}
+
+.select .highlight {
+  background: #000;
+  color: #FFFFFF;
+}
+
+
+/* The following code lets us hide the unneeded element, depending on if the script is running or not */
+
+.widget select,
+.no-widget .select {
+  /* if class is "widget", we hide the actual <select> element. Otherwise with "no-widget", we hide our customized elements that have the "select" class */
+  position: absolute;
+  left: -5000em;
+  height: 0;
+  overflow: hidden;
+}

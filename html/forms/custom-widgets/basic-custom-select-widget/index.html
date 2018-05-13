@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body class="no-widget">
+
+<form>
+  <select name="myFruit">
+    <option>Cherry</option>
+      <option>Lemon</option>
+      <option>Banana</option>
+      <option>Strawberry</option>
+      <option>Apple</option>
+  </select>
+
+<!-- This is our main container for our widget.
+     The tabindex attribute is what allows the user to focus the widget.
+     We'll see later that it's better to set it through JavaScript. -->
+  <div class="select" tabindex="0">
+    <!-- tabindex allows the select box to be focused on with tab -->
+
+    <!-- This container will be used to display the current value of the widget -->
+    <span class="value">Cherry</span>
+
+    <!-- This container will contain all the options available for our widget.
+         Because it's a list, it makes sense to use the ul element. -->
+    <ul class="optList">
+      <!-- Each option only contains the value to be displayed, we'll see later
+          how to handle the real value that will be sent with the form data -->
+      <li class="option">Cherry</li>
+      <li class="option">Lemon</li>
+      <li class="option">Banana</li>
+      <li class="option">Strawberry</li>
+      <li class="option">Apple</li>
+    </ul>
+  <!-- We use a lot of class names for each element so that we can identify each part without worrying about what specific HTML element is used. This makes sure that we don't bind the CSS and JavaScript to strongly to the HTML structure, so that we can make changes later without breaking a lot of code. E.g. changing the list to <optgroup> element or something -->
+  </div>
+</form>
+
+
+<script src="script.js"></script>
+</body>
+
+
+</html>

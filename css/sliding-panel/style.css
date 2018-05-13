@@ -1,0 +1,33 @@
+label[for="toggle"] {
+  font-size: 3rem;
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  z-index: 1;  /*this makes sure the ? icon will remain on top */
+  cursor: pointer;  /* hand pointer */
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -100px;
+}
+
+aside {
+  background-color: #a60000;
+  color: white;
+
+  width: 340px;
+  height: 100%;
+  padding: 0 20px;
+
+  position: fixed;  /* stays in same place even when scrolling */
+  top: 0;
+  right: -370px;  /* off-screen to the right until activated */
+
+  transition: 0.6s all;
+}
+
+/* the following rule selects the <aside> element adjacent to the <input> element, only when it is checked (:checked pseudoclass). then the right position goes to 0px to reveal the panel */
+input[type=checkbox]:checked + aside {
+  right: 0px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+
+<!-- the main difference between this form and the one from the Constraint Validation API is that the input here is simply type="text" and class="mail", rather than type="email". we will customize the input types and other stuff in classes in the CSS and JavaScript -->
+
+<form>
+  <p>
+    <label for="mail">
+        <span>Please enter an email address:</span>
+        <input type="text" class="mail" id="mail" name="mail">
+        <span class="error" aria-live="polite"></span>
+    </label>
+  <p>
+  <!-- Some legacy browsers need to have the `type` attribute
+       explicitly set to `submit` on the `button`element -->
+  <button type="submit">Submit</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+
+
+</html>
